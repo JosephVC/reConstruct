@@ -33,7 +33,7 @@ class Material(models.Model):
 class WasteType(models.Model):
     waste_type = models.CharField(max_length=128) # salvage, scrap, surplus etc.
 
-class Waste(modles.Model):
+class Waste(models.Model):
     project = models.ForeignKey(Project)
     waste_type = models.ForeignKey(WasteType)
     material = models.ForeignKey(Material)
