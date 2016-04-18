@@ -69,6 +69,7 @@ class WasteProcessor(models.Model):
     description = models.TextField()
     website = models.URLField()
     phone = models.CharField(max_length=15)
+    business_hours = models.TextField(blank=True)
     email = models.EmailField()
     address = models.CharField(max_length=128)
     materials_accepted = models.ManyToManyField(Material, related_name='materials')
