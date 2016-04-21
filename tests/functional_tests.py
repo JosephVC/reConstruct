@@ -1,10 +1,19 @@
 from selenium import webdriver
 import unittest
 
-browser = webdriver.Firefox()
-browser.get ('http://localhost:8000')
 
-assert 'Salvage' in browser.title
+class WebPage(unittest.TestCase):
+
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(1)
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_web_page_title(self):
+        self.browser.get ('http://localhost:8000')
+        assert 'Salvage App' in self.browser.title
 
 
 class NewVisitorTest(unittest.TestCase):
