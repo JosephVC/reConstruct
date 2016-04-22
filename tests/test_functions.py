@@ -1,8 +1,7 @@
 from selenium import webdriver
 import unittest
 
-
-class WebPage(unittest.TestCase):
+class Setup_Teardown(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -11,19 +10,15 @@ class WebPage(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
+
+class WebPage(Setup_Teardown):
+
     def test_web_page_title(self):
         self.browser.get ('http://localhost:8000')
         assert 'Salvage App' in self.browser.title
 
 
-class NewVisitorTest(unittest.TestCase):
-
-    def setUp(self):
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
-
-    def tearDown(self):
-        self.browser.quit()
+class NewVisitorTest(Setup_Teardown):
 
     def test_user_can_create_account(self):
         return
@@ -34,14 +29,7 @@ class NewVisitorTest(unittest.TestCase):
         # a password
         # both are necessary in order to create the account.
 
-class NewVisitorProfilePageTest(unittest.TestCase):
-
-    def setUp(self):
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
-
-    def tearDown(self):
-        self.browser.quit()
+class NewVisitorProfilePageTest(Setup_Teardown):
 
     def test_user_profile_page(self):
         return
@@ -66,14 +54,7 @@ class NewVisitorProfilePageTest(unittest.TestCase):
         # a field for 'project name'
         # and 'project address'.
 
-class NewVisitorRedirectTest(unittest.TestCase):
-
-    def setUp(self):
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
-
-    def tearDown(self):
-        self.browser.quit()
+class NewVisitorRedirectTest(Setup_Teardown):
 
     def test_user_redirect_after_forms_complete(self):
         return
