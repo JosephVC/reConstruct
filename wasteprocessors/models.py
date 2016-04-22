@@ -78,10 +78,10 @@ class Waste(models.Model):
     they wish to recycle, sell or donate for reuse."""
     project = models.ForeignKey(Project)
     waste_type = models.ForeignKey(WasteType)
-    material_type = models.ForeignKey(MaterialType)
+    material_type = models.ForeignKey(MaterialType, null=True)
 
     def __str__(self):
-        return self.description
+        return self.material_type.material_type
 
 class WasteProcessor(models.Model):
     """A model for storing data related to a specific construction waste
