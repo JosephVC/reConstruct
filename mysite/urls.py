@@ -17,12 +17,22 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
 from django.contrib.auth.views import login, logout
+from django.views.generic.base import RedirectView
+from django.conf import settings
 
+urlpatterns = [
+    url(r'^favicon\.ico$', 
+        RedirectView.as_view(url=settings.MEDIA_URL + 
+            'Path_to_favicon_file')),
+]
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^', include('myblog.urls')),
     url(r'^', include('wasteprocessors.urls')),
+    url(r'^favicon\.ico$', 
+        RedirectView.as_view(url=settings.MEDIA_URL + 
+            '../static/favicon.ico')),
     url(r'^login/$',
         login,
         {'template_name': 'login.html'},
