@@ -87,12 +87,12 @@ class WasteProcessor(models.Model):
     """A model for storing data related to a specific construction waste
     processing business or service."""
     company = models.CharField(max_length=128)
-    description = models.TextField()
-    website = models.URLField()
-    phone = models.CharField(max_length=15)
+    description = models.TextField(blank=True)
+    website = models.URLField(blank=True)
+    phone = models.CharField(max_length=15, blank=True)
     business_hours = models.TextField(blank=True)
-    email = models.EmailField()
-    address = models.CharField(max_length=128)
+    email = models.EmailField(blank=True)
+    address = models.CharField(max_length=128, blank=True)
     materials_accepted = models.ManyToManyField(MaterialType, related_name='material_types')
     will_pick_up = models.BooleanField()
     will_purchase = models.BooleanField()
