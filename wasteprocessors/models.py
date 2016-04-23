@@ -35,6 +35,7 @@ class Project(models.Model):
     by a user along with its associated data."""
     profile = models.ForeignKey(Profile, related_name='projects')
     project = models.CharField(max_length=128)
+    project_slug = models.SlugField()
     project_type = models.ForeignKey(ProjectType)
     address = models.CharField(max_length=128)
 
@@ -47,12 +48,13 @@ class MaterialType(models.Model):
     """A model for storing broad categories of building materials such as
     wood, brick, concrete, reusable building materials etc."""
     material_type = models.CharField(max_length=128)
+    material_slug = models.SlugField()
     description = models.TextField(blank=True)
     special_considerations = models.TextField(blank=True)
 
     def __str__(self):
         return self.material_type
-
+# THis model may be unnecessary for searching
 class Material(models.Model):
     """A model for storing specific types of building materials such
     as pressure treated lumber, cedar shingles, reusable kitchen cabinets
@@ -97,6 +99,10 @@ class WasteProcessor(models.Model):
     will_pick_up = models.BooleanField()
     will_purchase = models.BooleanField()
     accepts_donations = models.BooleanField()
+    paid_service = models.BooleanField(default=False)
+    accepts_salvage = models.NullBooleanField()
+    accepts_surplus = models.NullBooleanField()
+    accepts_scrap = models.NullBooleanField()
 
     def __str__(self):
         return self.company
