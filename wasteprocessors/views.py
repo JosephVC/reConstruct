@@ -31,11 +31,7 @@ def material_search_results(request, project_slug, material_slug):
     profile = get_object_or_404(Profile, pk=request.user.id)
     project = get_object_or_404(Project, project_slug=project_slug)
     material_type = get_object_or_404(MaterialType, material_slug=material_slug)
-    waste_processors = get_list_or_404(WasteProcessor)
-    material_processors = []
-    for company in waste_processors:
-        if material_type in company.materials_accepted.all():
-            material_processors.append(company)
+    material_processors = WasteProcessor.objects.filter(materials_accepted=material_type)
     context = {'profile': profile,
                'project': project,
                'material_type': material_type,
