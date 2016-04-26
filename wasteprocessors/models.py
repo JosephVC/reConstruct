@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+<<<<<<< HEAD
 # First four models will be moved to a 'userprofiles' app
 
 class UserType(models.Model):
@@ -41,6 +42,7 @@ class Project(models.Model):
 
     def __str__(self):
         return self.project
+=======
 
 # Models for the 'wasteprocessors' app
 
@@ -84,6 +86,15 @@ class Waste(models.Model):
 
     def __str__(self):
         return self.material_type.material_type
+=======
+# class Waste(models.Model):
+#     project = models.ForeignKey(Project)
+#     description = models.CharField(max_length=128)
+#     waste_type = models.ForeignKey(WasteType)
+#     material = models.ForeignKey(Material)
+
+#     def __str__(self):
+#         return self.description
 
 class WasteProcessor(models.Model):
     """A model for storing data related to a specific construction waste
