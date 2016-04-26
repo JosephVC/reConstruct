@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myblog',
     'wasteprocessors',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
