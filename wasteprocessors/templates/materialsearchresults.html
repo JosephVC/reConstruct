@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block content %}
+  <h3>Salvage and recycling companies that accept {{ material_type.material_type }}</h3>
+
+  {% for company in material_processors %}
+  <div>
+    <h2>{{ company.company }}</h2>
+    <!-- TODO: add more fields (see salvagecompanies.html) once you've entered the data-->
+  </div>
+  {% endfor %}
+{% endblock %}

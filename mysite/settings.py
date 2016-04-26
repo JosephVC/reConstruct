@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'favicon',
     'myblog',
     'wasteprocessors',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
