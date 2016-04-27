@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'favicon',
     'myblog',
+    'userprofiles',
     'wasteprocessors',
     'debug_toolbar',
 ]
