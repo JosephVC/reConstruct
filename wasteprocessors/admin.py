@@ -1,5 +1,5 @@
 from django.contrib import admin
-from wasteprocessors.models import MaterialType, WasteType, Waste, WasteProcessor
+from wasteprocessors.models import MaterialType, Waste, WasteType, WasteProcessor
 
 class MaterialTypeAdmin(admin.ModelAdmin):
     prepopulated_fields = {"material_slug": ("material_type",)}

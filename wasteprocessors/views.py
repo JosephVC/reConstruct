@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.http import HttpResponseRedirect
 
-from wasteprocessors.models import WasteProcessor, Profile, MaterialType, Project
+from userprofiles.models import Profile, Project
+from wasteprocessors.models import WasteProcessor, MaterialType
 from wasteprocessors.forms import WasteForm
 
 # Create your views here.

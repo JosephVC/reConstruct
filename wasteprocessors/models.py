@@ -1,5 +1,5 @@
 from django.db import models
-from userprofiles import Project
+from userprofiles.models import Project
 
 
 class MaterialType(models.Model):
