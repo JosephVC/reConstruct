@@ -1,50 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from userprofiles import Project
 
-<<<<<<< HEAD
-# First four models will be moved to a 'userprofiles' app
-
-class UserType(models.Model):
-    """A model for storing the type of user, such as construction business,
-    home owner, salvage company, recycling company etc. This allows for
-    certain features of our app to be targeted to specific kinds of users."""
-    user_type = models.CharField(max_length=128)
-
-    def __str__(self):
-        return self.user_type
-
-class Profile(models.Model):
-    """A model for storing data related to specific users."""
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type = models.ForeignKey(UserType)
-    company = models.CharField(max_length=128)
-
-    def __str__(self):
-        return self.user.username
-
-class ProjectType(models.Model):
-    """A model for storing categories of construction projects such as
-    new construction, commercial construction, residential construction,
-    remodel, home owner project etc."""
-    project_type = models.CharField(max_length=128)
-
-    def __str__(self):
-        return self.project_type
-
-class Project(models.Model):
-    """A model for storing a specific construction project, registered
-    by a user along with its associated data."""
-    profile = models.ForeignKey(Profile, related_name='projects')
-    project = models.CharField(max_length=128)
-    project_slug = models.SlugField()
-    project_type = models.ForeignKey(ProjectType)
-    address = models.CharField(max_length=128)
-
-    def __str__(self):
-        return self.project
-=======
-
-# Models for the 'wasteprocessors' app
 
 class MaterialType(models.Model):
     """A model for storing broad categories of building materials such as
@@ -56,18 +12,6 @@ class MaterialType(models.Model):
 
     def __str__(self):
         return self.material_type
-# THis model may be unnecessary for searching
-class Material(models.Model):
-    """A model for storing specific types of building materials such
-    as pressure treated lumber, cedar shingles, reusable kitchen cabinets
-    etc."""
-    material = models.CharField(max_length=128)
-    material_type = models.ForeignKey(MaterialType)
-    description = models.TextField(blank=True)
-    special_considerations = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.material
 
 class WasteType(models.Model):
     """A model for storing various categories of construction waste such
@@ -86,15 +30,6 @@ class Waste(models.Model):
 
     def __str__(self):
         return self.material_type.material_type
-=======
-# class Waste(models.Model):
-#     project = models.ForeignKey(Project)
-#     description = models.CharField(max_length=128)
-#     waste_type = models.ForeignKey(WasteType)
-#     material = models.ForeignKey(Material)
-
-#     def __str__(self):
-#         return self.description
 
 class WasteProcessor(models.Model):
     """A model for storing data related to a specific construction waste

@@ -3,11 +3,8 @@ beautifulsoup4==4.4.1
 decorator==4.0.9
 dj-database-url==0.4.0
 Django==1.9.2
-<<<<<<< HEAD
 django-bootstrap3==7.0.0
-=======
 django-debug-toolbar==1.4
->>>>>>> c8ec2d7fed005d72a1f74bb807dafc20811c1253
 django-registration==2.0.4
 # gnureadline==6.3.3
 ipython==4.1.1
