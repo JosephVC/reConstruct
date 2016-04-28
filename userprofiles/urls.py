@@ -1,7 +1,9 @@
-from django.conf.urls import urls
+from django.conf.urls import url
 
-from . import views
+from userprofiles.views import profile_view
 
 urlpatterns = [
-				url(r'^$', views.index, name='index'),
+	url(r'^$',
+        profile_view,
+        name="profile"),
 ]

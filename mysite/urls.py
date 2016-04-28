@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^', include('myblog.urls')),
     url(r'^', include('wasteprocessors.urls')),
+    url(r'^profile/', include('userprofiles.urls')),
     url(r'^favicon\.ico$', 
         RedirectView.as_view(url=settings.MEDIA_URL + 
             '../static/favicon.ico')),
