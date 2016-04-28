@@ -34,10 +34,10 @@ class Project(models.Model):
     """A model for storing a specific construction project, registered
     by a user along with its associated data."""
     profile = models.ForeignKey(Profile, related_name='projects')
-    project = models.CharField(max_length=128)
-    project_slug = models.SlugField()
-    project_type = models.ForeignKey(ProjectType)
-    address = models.CharField(max_length=128)
+    project = models.CharField(max_length=128, blank=True)
+    project_slug = models.SlugField(blank=True)
+    project_type = models.ForeignKey(ProjectType, null=True)
+    address = models.CharField(max_length=128, blank=True)
 
     def __str__(self):
         return self.project
