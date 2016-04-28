@@ -15,8 +15,8 @@ class UserType(models.Model):
 class Profile(models.Model):
     """A model for storing data related to specific users."""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type = models.ForeignKey(UserType)
-    company = models.CharField(max_length=128)
+    user_type = models.ForeignKey(UserType, null=True)
+    company = models.CharField(max_length=128, blank=True)
 
     def __str__(self):
         return self.user.username

@@ -1,34 +1,23 @@
 from django.shortcuts import render
-from django.http imort HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
-from .forms import UserTypeForm, ProfileForm, ProjectTypeForm, ProjectForm, WasteForm
+from .forms import ProfileForm, ProjectForm
+
+from userprofiles.models import Profile
 
 # Create your views here.
 
-# UserTypeForm
-def get_user_type(request):
-	if request.method =='POST':
-		form = UserTypeForm(request.POST)
-
-		if form.is_valid():
-			return HttpResponseRedirect('/thanks/')
-	else:
-		form = UserTypeForm()
-
-	return render(request, 'user_type.html', {'form': form})
-
-
 # View for ProfileForm
-def get_profile(request):
+def create_profile_view(request):
 	if request.method =='POST':
-		form = ProfileForm(request.POST)
-
+		# create a new profile for the logged in user
+		profile = Profile(user=request.user)
+		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
-			return HttpResponseRedirect('/thanks/')
-
+			form.save()
+			return HttpResponseRedirect('/')
 	else:
 		form = ProfileForm()
-	
 	return render(request, 'profile.html', {'form': form})
 
 #  View for ProjectTypeForm
