@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.utils.text import slugify
 
 from .forms import ProfileForm, ProjectForm
 
-from userprofiles.models import Profile
+from userprofiles.models import Profile, Project
 
 # Create your views here.
 
@@ -15,42 +16,25 @@ def create_profile_view(request):
 		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/')
+			return HttpResponseRedirect('/profile/new-project/')
 	else:
 		form = ProfileForm()
 	return render(request, 'profile.html', {'form': form})
 
-#  View for ProjectTypeForm
-def get_project_type(request):
-	if request.method =='POST':
-		form = ProjectTypeForm(request.POST)
-
-		if form.is_valid():
-			return HttpResponseRedirect('/thanks/')
-
-	else:
-		form = ProjectTypeForm()
-
-	return render(request, 'project_type.html', {'form': form})
-
-#  View for ProjectForm
-def get_project(request):
+def create_project_view(request):
+	# get the user's profile
+	profile = get_object_or_404(Profile, pk=request.user.id)
 	if request.method == 'POST':
-		form = ProjectForm(request.POST)
-
+		# create a new project for this profile
+		project = Project(profile=profile)
+		form = ProjectForm(request.POST, instance=project)
 		if form.is_valid():
-			return HttpResponseRedirect('/thanks/')
+			# generate project slug from project name
+			project.project_slug = slugify(form.cleaned_data['project'])
+			project.save()
+			form.save()
+			return HttpResponseRedirect('/material-search/')
 	else:
 		form =  ProjectForm()
 	return render(request, 'project.html', {'form': form})
 
-# View for WasteForm
-def get_waste(request):
-	if request.method == 'POST':
-		form = WasteForm(request.POST)
-
-		if form.is_valid():
-			return HttpResponseRedirect('/thanks/')
-	else:
-		form = WasteForm()
-	return render(request, 'waste.html', {'form': form})

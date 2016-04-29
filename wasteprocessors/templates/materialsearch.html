@@ -2,6 +2,7 @@
 
 {% block content %}
 <h2>{{ profile.company }}</h2>
+<h3>Enter the project and type of waste that you need to get rid of:</h3>
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}

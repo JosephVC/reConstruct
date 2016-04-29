@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from userprofiles.views import create_profile_view
+from userprofiles.views import create_profile_view, create_project_view
 
 urlpatterns = [
 	url(r'^$',

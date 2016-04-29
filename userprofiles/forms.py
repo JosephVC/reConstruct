@@ -7,7 +7,6 @@ class ProfileForm(ModelForm):
 		model = Profile
 		fields = ['user_type', 'company']
 
-
 #  Create a form for the Project model
 class ProjectForm(ModelForm):
 	class Meta:
