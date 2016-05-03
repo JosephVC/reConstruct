@@ -8,8 +8,25 @@ from userprofiles.models import Profile, Project
 
 # Create your views here.
 
+def home_view(request):
+	if request.user.is_authenticated():
+		return HttpResponseRedirect('/profile/')
+	else:
+		return HttpResponseRedirect('/accounts/register/')
+
+	if request.method =='POST':
+		# create a new profile for the logged in user
+		profile = Profile(user=request.user)
+		form = ProfileForm(request.POST, instance=profile)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/profile/new-project/')
+	else:
+		form = ProfileForm()
+	return render(request, 'profile.html', {'form': form})
+
 # View for ProfileForm
-def create_profile_view(request):
+def profile_view(request):
 	if request.method =='POST':
 		# create a new profile for the logged in user
 		profile = Profile(user=request.user)

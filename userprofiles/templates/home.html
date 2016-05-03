@@ -4,9 +4,6 @@
 <h2>Welcome to reConstruct!</h2>
 <p>A website that connects building professionals and home owners
 with salvage companies, material recycling and reclamation services.</p>
-<p>New to the site? Sign up for a free account to get started.</p>
-<form action="" method="POST">{% csrf_token %}
-  {{ form.as_p }}
-  <p><input type="submit" value="Log In"></p>
-</form>
+<p>New to the site? Create your profile to add projects and search for
+waste materials <a href="{% url 'create_profile' %}">here.</a></p>
 {% endblock %}
