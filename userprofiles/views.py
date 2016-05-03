@@ -25,18 +25,24 @@ def home_view(request):
 		form = ProfileForm()
 	return render(request, 'profile.html', {'form': form})
 
-# View for ProfileForm
 def profile_view(request):
+	profile, created = Profile.objects.get_or_create(user=request.user)
+	if created:
+		return HttpResponseRedirect('/profile/edit/')
+	else:
+		return render(request, 'profile.html', {'profile': profile})
+
+def edit_profile_view(request):
 	if request.method =='POST':
 		# create a new profile for the logged in user
-		profile = Profile(user=request.user)
+		profile = Profile.objects.get(user=request.user)
 		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/profile/new-project/')
+			return HttpResponseRedirect('/profile/')
 	else:
 		form = ProfileForm()
-	return render(request, 'profile.html', {'form': form})
+	return render(request, 'editprofile.html', {'form': form})
 
 def create_project_view(request):
 	# get the user's profile
