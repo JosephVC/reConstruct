@@ -8,8 +8,8 @@
 <h2>Projects:</h2>
 {% if profile.projects %}
     {% for project in profile.projects.all %}
-        <a href="{% url 'project' project.id %}">{{ project.project }}</a>
+        <p><a href="{% url 'material_search' project.project_slug %}">{{ project.project }}</a></p>
     {% endfor %}
 {% endif %}
-<a href="{% url 'new_project' %}">Add new project</a>
+<p><a href="{% url 'new_project' %}">Add new project</a></p>
 {% endblock %}

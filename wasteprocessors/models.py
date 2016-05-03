@@ -46,9 +46,7 @@ class WasteProcessor(models.Model):
     will_purchase = models.BooleanField()
     accepts_donations = models.BooleanField()
     paid_service = models.BooleanField(default=False)
-    accepts_salvage = models.NullBooleanField()
-    accepts_surplus = models.NullBooleanField()
-    accepts_scrap = models.NullBooleanField()
+    waste_types_accepted = models.ManyToManyField(WasteType, related_name='waste_types')
 
     def __str__(self):
         return self.company

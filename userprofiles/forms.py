@@ -5,7 +5,7 @@ from userprofiles.models import Profile, Project
 class ProfileForm(ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['user_type', 'company', 'phone', 'email', 'address']
+		fields = ['user_type', 'company', 'phone', 'address']
 
 #  Create a form for the Project model
 class ProjectForm(ModelForm):

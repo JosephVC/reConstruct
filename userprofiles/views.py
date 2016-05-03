@@ -35,7 +35,7 @@ def profile_view(request):
 def edit_profile_view(request):
 	if request.method =='POST':
 		# create a new profile for the logged in user
-		profile = Profile.objects.get(user=request.user)
+		profile = get_object_or_404(Profile, user=request.user)
 		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
 			form.save()
@@ -56,7 +56,9 @@ def create_project_view(request):
 			project.project_slug = slugify(form.cleaned_data['project'])
 			project.save()
 			form.save()
-			return HttpResponseRedirect('/material-search/')
+			return HttpResponseRedirect(
+				'/material-search/project/{}/'.format(
+				project.project_slug))
 	else:
 		form =  ProjectForm()
 	return render(request, 'project.html', {'form': form})

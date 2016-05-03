@@ -5,4 +5,4 @@ class WasteForm(ModelForm):
 
     class Meta:
         model = Waste
-        fields = '__all__'
+        fields = ['waste_type', 'material_type']
