@@ -2,7 +2,12 @@
 
 {% block content %}
   <h3>Search results for {{ waste_type.waste_type }} {{ material_type.material_type }}</h3>
-
+  <p>Filter your results:</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+  </form>
   {% for company in material_processors %}
   <div>
     <h2>{{ company.company }}</h2>
