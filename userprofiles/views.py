@@ -23,7 +23,6 @@ def profile_view(request):
 
 def edit_profile_view(request):
 	if request.method =='POST':
-		# create a new profile for the logged in user
 		profile = get_object_or_404(Profile, user=request.user)
 		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
