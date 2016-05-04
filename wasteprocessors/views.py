@@ -28,15 +28,13 @@ def material_search_view(request, project_slug):
 
 def material_search_results(request, waste_id):
     waste = get_object_or_404(Waste, pk=waste_id)
-    profile = get_object_or_404(Profile, pk=request.user.id)
-    project = get_object_or_404(Project, pk=waste.project.id)
-    material_type = get_object_or_404(MaterialType, pk=waste.material_type.id)
-    waste_type = get_object_or_404(WasteType, pk=waste.waste_type.id)
-    material_processors = WasteProcessor.objects.filter(materials_accepted=material_type)
-    material_processors = material_processors.filter(waste_types_accepted=waste_type)
-    context = {'profile': profile,
-               'project': project,
-               'material_type': material_type,
+    material_processors = WasteProcessor.objects.filter(materials_accepted=waste.material_type)
+    material_processors = material_processors.filter(waste_types_accepted=waste.waste_type)
+    # add checkbox form for additional filtering
+    context = {'profile': waste.project.profile,
+               'project': waste.project,
+               'material_type': waste.material_type,
+               'waste_type': waste.waste_type,
                'material_processors': material_processors
     }
     return render(request, 'materialsearchresults.html', context)

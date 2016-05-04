@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
 <h2>{{ profile.company }}</h2>
 <h2>{{ project.project }}</h2>
-<h3>Enter the type of waste that you need to get rid of:</h3>
+{% block search_results %}{% endblock %}
+<h3>Enter the type of construction waste that you need to get rid of:</h3>
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
