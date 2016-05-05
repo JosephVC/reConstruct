@@ -27,9 +27,16 @@ def edit_profile_view(request):
 		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/new-project/')
+			return HttpResponseRedirect('/profile/')
 	else:
-		form = ProfileForm()
+		profile, created = Profile.objects.get_or_create(user=request.user)
+		if created:
+			form = ProfileForm()
+		else:
+			form = ProfileForm(initial={'user_type': profile.user_type,
+										'company': profile.company,
+										'email': profile.email,
+										'phone:': profile.phone})
 	return render(request, 'editprofile.html', {'form': form})
 
 def create_project_view(request):

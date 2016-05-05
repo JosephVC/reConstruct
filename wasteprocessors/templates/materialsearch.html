@@ -2,7 +2,8 @@
 {% block content %}
 <div class="jumbotron">
 <h1>Material Search</h1>
-<h3>{{ profile.company }} | {{ project.project }}</h3>
+<h3>Company: {{ profile.company}}</h3>
+<h3>Project: <a href="{% url 'profile' %}">{{ project.project }}</a></h3>
 {% block search_results %}{% endblock %}
 <p>Select the type of construction waste that you need to get rid of:</p>
 <form action="" method="post">
