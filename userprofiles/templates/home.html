@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Welcome to reConstruct!</h2>
-<p>A website that connects building professionals and home owners
+
+<div class="jumbotron">
+  <h1>reConstruct</h1>
+  <p>A website that connects building professionals and home owners
 with salvage companies, material recycling and reclamation services.</p>
-<p>New to the site? Create your profile to add projects and search for
-waste materials <a href="{% url 'create_profile' %}">here.</a></p>
+
+  <p><a class="btn btn-primary btn-lg" href="http://localhost:8000/accounts/register/" role="button">Sign up</a>
+  <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Log in</a></p>
+
+</div>
+
 {% endblock %}

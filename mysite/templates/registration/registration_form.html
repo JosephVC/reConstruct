@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Welcome to reConstruct!</h2>
-<p>A website that connects building professionals and home owners
-with salvage companies, material recycling and reclamation services.</p>
-<p>New to the site? Sign up for a free account to get started.</p>
+<div class="jumbotron">
+  <h1>Sign up:</h1>
+<p>Create your free account below:</p>
 <form action="" method="POST">{% csrf_token %}
   {{ form.as_p }}
-  <p><input type="submit" value="Log In"></p>
+  <p><input class="btn btn-primary btn-lg" type="submit" value="Log In"></p>
 </form>
+</div>
 {% endblock %}

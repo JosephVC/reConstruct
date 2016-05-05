@@ -12,7 +12,7 @@ def home_view(request):
 	if request.user.is_authenticated():
 		return HttpResponseRedirect('/profile/')
 	else:
-		return HttpResponseRedirect('/accounts/register/')
+		return render(request, 'home.html')
 
 def profile_view(request):
 	profile, created = Profile.objects.get_or_create(user=request.user)
@@ -27,7 +27,7 @@ def edit_profile_view(request):
 		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/profile/')
+			return HttpResponseRedirect('/new-project/')
 	else:
 		form = ProfileForm()
 	return render(request, 'editprofile.html', {'form': form})
