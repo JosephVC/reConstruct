@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Create your profile:</h2>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
+<div class="jumbotron">
+{% if profile.company %}
+<h1>{{ profile.company }}</h1>
+{% else %}
+<p><a href="{% url 'edit_profile' %}">Create your profile</a></p>
+{% endif %}
+{% if profile.address %}
+<p>{{ profile.address }}</p>
+{% else %}
+<p><a href="{% url 'edit_profile' %}">Add your address</a></p>
+{% endif %}
+{% if profile.phone %}
+<p>{{ profile.phone }}</p>
+{% else %}
+<p><a href="{% url 'edit_profile' %}">Add your phone number</a></p>
+{% endif %}
+{% if profile.user.email %}
+<p>{{ profile.user.email }}</p>
+{% else %}
+<p><a href="{% url 'edit_profile' %}">Add your email</a></p>
+{% endif %}
+<h2>Projects:</h2>
+{% if profile.projects %}
+    {% for project in profile.projects.all %}
+        <p><a href="{% url 'material_search' project.project_slug %}">{{ project.project }}</a></p>
+    {% endfor %}
+{% endif %}
+<p><a href="{% url 'new_project' %}">Add a new project to search for salvage companies and recycling services near you.</a></p>
+</div>
 {% endblock %}

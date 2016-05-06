@@ -8,18 +8,36 @@ from userprofiles.models import Profile, Project
 
 # Create your views here.
 
-# View for ProfileForm
-def create_profile_view(request):
+def home_view(request):
+	if request.user.is_authenticated():
+		return HttpResponseRedirect('/profile/')
+	else:
+		return render(request, 'home.html')
+
+def profile_view(request):
+	profile, created = Profile.objects.get_or_create(user=request.user)
+	if created:
+		return HttpResponseRedirect('/profile/edit/')
+	else:
+		return render(request, 'profile.html', {'profile': profile})
+
+def edit_profile_view(request):
 	if request.method =='POST':
-		# create a new profile for the logged in user
-		profile = Profile(user=request.user)
+		profile = get_object_or_404(Profile, user=request.user)
 		form = ProfileForm(request.POST, instance=profile)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/profile/new-project/')
+			return HttpResponseRedirect('/profile/')
 	else:
-		form = ProfileForm()
-	return render(request, 'profile.html', {'form': form})
+		profile, created = Profile.objects.get_or_create(user=request.user)
+		if created:
+			form = ProfileForm()
+		else:
+			form = ProfileForm(initial={'user_type': profile.user_type,
+										'company': profile.company,
+										'email': profile.email,
+										'phone:': profile.phone})
+	return render(request, 'editprofile.html', {'form': form})
 
 def create_project_view(request):
 	# get the user's profile
@@ -33,7 +51,9 @@ def create_project_view(request):
 			project.project_slug = slugify(form.cleaned_data['project'])
 			project.save()
 			form.save()
-			return HttpResponseRedirect('/material-search/')
+			return HttpResponseRedirect(
+				'/material-search/project/{}/'.format(
+				project.project_slug))
 	else:
 		form =  ProjectForm()
 	return render(request, 'project.html', {'form': form})

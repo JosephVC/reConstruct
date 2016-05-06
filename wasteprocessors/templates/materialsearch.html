@@ -1,11 +1,15 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h2>{{ profile.company }}</h2>
-<h3>Enter the project and type of waste that you need to get rid of:</h3>
+<div class="jumbotron">
+<h1>Material Search</h1>
+<h3>Company: {{ profile.company}}</h3>
+<h3>Project: <a href="{% url 'profile' %}">{{ project.project }}</a></h3>
+{% block search_results %}{% endblock %}
+<p>Select the type of construction waste that you need to get rid of:</p>
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit" />
+    <p><input class="btn btn-primary btn-lg" type="submit" value="Submit"></p>
 </form>
+</div>
 {% endblock %}

@@ -2,43 +2,60 @@ from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.http import HttpResponseRedirect
 
 from userprofiles.models import Profile, Project
-from wasteprocessors.models import WasteProcessor, MaterialType
-from wasteprocessors.forms import WasteForm
+from wasteprocessors.models import WasteProcessor, MaterialType, Waste, WasteType
+from wasteprocessors.forms import WasteForm, SearchFilterForm
 
 # Create your views here.
-
-def index(request):
-    return HttpResponseRedirect('/profile/')
 
 def salvage_companies_list(request):
     salvage_companies = get_list_or_404(WasteProcessor)
     context = {'salvage_companies': salvage_companies}
     return render(request, 'salvagecompanies.html', context)
 
-def material_search_view(request):
-    profile = get_object_or_404(Profile, pk=request.user.id)
-    if request.method == 'POST':
-        form = WasteForm(request.POST)
-        project = Project.objects.get(pk=request.POST['project'])
-        material_type = MaterialType.objects.get(pk=request.POST['material_type'])
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(
-                '/material-search/{}/{}/'.format(
-                project.project_slug, material_type.material_slug))
-    else:
-        form = WasteForm()
-    context = {'profile': profile, 'form': form}
-    return render(request, 'materialsearch.html', context)
-
-def material_search_results(request, project_slug, material_slug):
+def material_search_view(request, project_slug):
     profile = get_object_or_404(Profile, pk=request.user.id)
     project = get_object_or_404(Project, project_slug=project_slug)
-    material_type = get_object_or_404(MaterialType, material_slug=material_slug)
-    material_processors = WasteProcessor.objects.filter(materials_accepted=material_type)
-    context = {'profile': profile,
-               'project': project,
-               'material_type': material_type,
-               'material_processors': material_processors
+    if request.method == 'POST':
+        waste = Waste(project=project)
+        form = WasteForm(request.POST, instance=waste)
+        if form.is_valid():
+            waste = form.save()
+            return HttpResponseRedirect(
+                '/material-search/results/{}/'.format(waste.id)
+                )
+    else:
+        form = WasteForm()
+    context = {'profile': profile, 'project': project, 'form': form}
+    return render(request, 'materialsearch.html', context)
+
+def material_search_results(request, waste_id):
+    waste = get_object_or_404(Waste, pk=waste_id)
+    material_processors = WasteProcessor.objects.filter(
+        materials_accepted=waste.material_type)
+    material_processors = material_processors.filter(
+        waste_types_accepted=waste.waste_type)
+    # add checkbox form for additional filtering
+    if request.method == 'POST':
+        form = SearchFilterForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['will_purchase']:
+                material_processors = material_processors.filter(
+                    will_purchase=True)
+            if form.cleaned_data['accepts_donations']:
+                material_processors = material_processors.filter(
+                    accepts_donations=True)
+            if form.cleaned_data['will_pick_up']:
+                material_processors = material_processors.filter(
+                    will_pick_up=True)
+            # no need to redirect after POST, rather just re-render the
+            # page with the new search filters
+    else:
+        form = SearchFilterForm()
+    context = {'profile': waste.project.profile,
+               'project': waste.project,
+               'material_type': waste.material_type,
+               'waste_type': waste.waste_type,
+               'material_processors': material_processors,
+               'form': form,
     }
     return render(request, 'materialsearchresults.html', context)
