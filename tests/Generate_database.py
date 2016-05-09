@@ -40,6 +40,6 @@ for j in apps:
 print ('\nPerforming migrations')
 os.system("python ../manage.py migrate")
 
-#print (os.listdir('../'))
-
-
+# Populate database
+print ('\nPopulating database')
+os.system("python ../manage.py loaddata db_test.json")
