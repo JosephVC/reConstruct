@@ -1,9 +1,10 @@
 from django.test import TestCase
 from django.core.urlresolvers import resolve
 
-from wasteprocessors.views import salvage_companies_list
-from wasteprocessors.views import material_search_view
-from wasteprocessors.views import material_search_results
+from wasteprocessors.views import \
+    salvage_companies_list, \
+    material_search_view, \
+    material_search_results
 
 
 class WasteprocessorsURLsTestCase(TestCase):
@@ -13,11 +14,8 @@ class WasteprocessorsURLsTestCase(TestCase):
         Test that the salvage_companies of the site resolves to the 
         salvage_companies_list function
         """
-        print ("made it to here\n")
         salvage_companies = resolve('/salvage-companies/')
-        print ("salvage_companies = ", salvage_companies)
-        print ("salvage_companies_list = ", salvage_companies_list)
-        self.assertEqual(salvag_companies.func, salvage_companies_list)
+        self.assertEqual(salvage_companies.func, salvage_companies_list)
 
     def test_material_search_url_uses_material_search_view(self):
         """
@@ -35,31 +33,3 @@ class WasteprocessorsURLsTestCase(TestCase):
         """
         material_search_res = resolve('/results/P<waste_id>2/')
         self.assertEqual(material_search_res.func, material_search_results)
-
-    # def test_edit_profile_url_uses_edit_profile_view(self):
-    #     """
-    #     Test that the /profile/edit of the site resolves to the 
-    #     edit_profile_view function
-    #     """
-    #     edit_profile = resolve('/profile/edit/')
-    #     self.assertEqual(edit_profile.func, edit_profile_view)
-
-    # def test_new_project_url_uses_create_project_view(self):
-    #     """
-    #     Test that the new_project of the site resolves to the 
-    #     create_project_view function
-    #     """
-    #     new_project = resolve('/new-project/')
-    #     self.assertEqual(new_project.func, create_project_view)
-
-##### done to here
-    # def test_solo_details_url(self):
-    #     """
-    #     Test that the URL for SoloDetail resolves to the correct view function
-    #     """
-    #     solo_detail = resolve( '/recordings/kind-of-blue/all-blues/cannonball-adderley/')
-
-    #     self.assertEqual(solo_detail.func.__name__, 'solo_detail')
-    #     self.assertEqual(solo_detail.kwargs['album'], 'kind-of-blue')
-    #     self.assertEqual(solo_detail.kwargs['track'], 'all-blues')
-    #     self.assertEqual(solo_detail.kwargs['artist'], 'cannonball-adderley')

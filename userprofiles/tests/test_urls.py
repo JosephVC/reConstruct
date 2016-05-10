@@ -1,10 +1,11 @@
 from django.test import TestCase
 from django.core.urlresolvers import resolve
 
-from userprofiles.views import home_view
-from userprofiles.views import profile_view
-from userprofiles.views import edit_profile_view
-from userprofiles.views import create_project_view
+from userprofiles.views import \
+    home_view, \
+    profile_view, \
+    edit_profile_view, \
+    create_project_view
 
 
 class UserprofilesURLsTestCase(TestCase):

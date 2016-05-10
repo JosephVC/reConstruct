@@ -3,9 +3,21 @@ from unittest.mock import patch, Mock
 from django.test import TestCase, RequestFactory
 from django.db.models.query import QuerySet
 
-from solos.views import index, solo_detail
-from solos.models import Solo
-from albums.models import Album, Track
+from userprofiles.views import \
+    home_view, \
+    profile_view, \
+    edit_profile_view, \
+    create_project_view
+from userprofiles.models import \
+    UserType, \
+    Profile, \
+    Project, \
+    ProjectType
+from wasteprocessors.models import \
+    MaterialType, \
+    WasteType, \
+    Waste, \
+    WasteProcessor
 
 
 class SolosBaseTestCase(TestCase):
