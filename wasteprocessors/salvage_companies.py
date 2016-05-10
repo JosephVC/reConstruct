@@ -1,7 +1,7 @@
-# copy and pasted from city of seattle website
+# company data copy and pasted from city of seattle website
 # http://your.kingcounty.gov/solidwaste/wdidw/category.asp?CatID=17%20%20
-# click through forms to individual provider detail pages. this is easier than
-# scraping for this site because of complex html structure and asp.net weirdness
+# this was easier than web scraping for this site because of complex, table based
+# html structure and asp.net form submission weirdness
 
 companies = [
 """Benchmark Recycling, Inc.
@@ -1743,19 +1743,24 @@ Serves businesses and residents.""",
 
 ]
 
-# a list for storing all companies -- use to update database
+# a list for storing all companies as dicts -- use to update database in
+# models.py
 all_companies = []
 
-# extract relevant values from string and store in a dict. this will be moved
-# to a function, or perhaps a model method
-
+# extract relevant values from string and store in a dict.
 for company in companies:
-    c_dict = {}
-
+    c_dict = {
+        'company': '',
+        'address': '',
+        'phone': '',
+        'email': '',
+        'business_hours': '',
+        'website': '',
+        'materials_accepted': set(),
+        'description': '',
+        }
     c_list = company.split('\n')
-
     c_dict['company'] = c_list[0]
-
     for i in c_list:
         if i.startswith('Address:'):
             c_dict['address'] = i.replace('Address: ', '')
@@ -1768,7 +1773,6 @@ for company in companies:
         if i.startswith('Web:'):
             website = i.replace('Web: ', '')
             c_dict['website'] = website.replace(' (external)', '')
-
     # get building materials accepted by company
     m_index = c_list.index('Materials Handled')
     for i in c_list:
@@ -1782,13 +1786,11 @@ for company in companies:
     c_dict['materials_accepted'] = materials_accepted
     if 'Selected Material(s)' in c_dict['materials_accepted']:
         c_dict['materials_accepted'].remove('Selected Material(s)')
-
     # add services to description value
     c_dict['description'] = ''
     for index, item in enumerate(c_list):
         if item =='Services':
             c_dict['description'] = c_list[index+1]
-
     # add description to description value
     for i in c_list[d_index:]:
         if i.startswith('Description:'):
@@ -1798,6 +1800,10 @@ for company in companies:
             c_dict['description'] += '\n'
             c_dict['description'] += i
     all_companies.append(c_dict)
+
+
+
+
 
 
 
