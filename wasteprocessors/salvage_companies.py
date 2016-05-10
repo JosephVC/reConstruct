@@ -46,7 +46,6 @@ Pallets
 Paper
  - Cardboard
 Vehicles, Vehicle-related Items
- - Vehicles and Major Vehicle Parts
 Selected Material(s)
 Reusable Building Materials
 Description: Accepts miscellaneous reusable building materials including cabinets, doors, fencing, floor coverings, and fixtures, etc.
@@ -80,8 +79,6 @@ Construction and Demolition Debris
  - Reusable Building Materials
  - Wood
 Furniture
- - Household Furniture
- - Office Furniture
 Selected Material(s)
 Reusable Building Materials
 Wood
@@ -112,10 +109,6 @@ Construction and Demolition Debris
  - Reusable Building Materials
  - Wood
 Drums and Barrels
- - Barrels and Drums
-Electronics
- - Computers, Laptops, Tablets
- - Monitors
 Glass
  - Mixed Glass
  - Separated Glass
@@ -131,15 +124,7 @@ Paper
  - Cardboard
  - Newspaper
 Plastic
- - Agricultural Plastic
- - Bottles, Jugs and Tubs
- - Mixed Plastics and Other Types of Plastics
- - Packing Peanuts and Foam Blocks
- - Plastic Film and Grocery Bags
- - Plastic Nursery Pots
- - Plastic Office Supplies
 Textiles
- - Clothing, Shoes, and Fabrics
 Vehicles, Vehicle-related Items
  - Motor Oil and Automotive Fluids
 Selected Material(s)
@@ -166,9 +151,6 @@ Web: http://www.reuseconsulting.com (external)
 Hours: Mon-Fri: 8am-6pm. Weekends by appointment.
 Materials Handled
 Appliances
- - Other Major Appliances
- - Refrigerators, Freezers
- - Small Household Appliances
 Carpet
  - Carpet
 Construction and Demolition Debris
@@ -177,7 +159,6 @@ Construction and Demolition Debris
  - Reusable Building Materials
  - Wood
 Furniture
- - Office Furniture
 Landscaping, Landclearing
  - Rock
 Selected Material(s)
@@ -220,41 +201,22 @@ Construction and Demolition Debris
  - Wood
 Drums and Barrels
  - Barrels and Drums
-Electronics
- - Monitors
- - TVs
-Food
- - Food Scraps
 Glass
  - Mixed Glass
 Landscaping, Landclearing
- - Brush, Woody Waste
  - Clean Soil
- - Contaminated Sand
  - Contaminated Soil
  - Yard Waste
 Metal
- - Aluminum Cans
  - Ferrous Metals
  - Nonferrous Metals
- - Steel, Tin Cans
+ - Steel
 Pallets
  - Pallets
 Paper
  - Cardboard
- - Mixed Paper
- - Newspaper
- - Office Paper
- - Phone Books
- - Shredded Paper
 Plastic
- - Bottles, Jugs and Tubs
- - Mixed Plastics and Other Types of Plastics
- - Packing Peanuts and Foam Blocks
- - Plastic Film and Grocery Bags
- - Plastic Nursery Pots
 Tires
- - Passenger, Truck, Motorcycle Tires
 Selected Material(s)
 Wood
 Description: For drop off information call 206-623-4080. Hauling services available.
@@ -310,10 +272,6 @@ Web: http://www.seconduse.com (external)
 Hours: Mon-Sun: 9am - 6pm
 Materials Handled
 Appliances
- - Microwaves
- - Other Major Appliances
- - Refrigerators, Freezers
- - Small Household Appliances
 Construction and Demolition Debris
  - Brick
  - Reusable Building Materials
@@ -1457,61 +1415,6 @@ Restrictions: Does not pick up the following (non-recyclables): Household garbag
 Pick-up only.
 
 Fees: Call for details.
-
-Serves businesses and residents.""",
-"""KT Recycling (formerly Kendall Trucking and Recycling)
-
-Services
-On-site container hauling service for general demolition and construction recycling.
-
-Contact Information
-Address: Pick-up service only
- 
-Telephone: 206-545-6950
-Fax: 206-324-6273
-Email: ktrecyclingwa@gmail.com
-Web: http://ktrecyclingwa.com (external)
-Hours: Mon-Fri: 7am - 6pm and Sat: 8am - 4pm. Night service available.
-Materials Handled
-Construction and Demolition Debris
- - Acoustic Ceiling Tile
- - Asphalt
- - Asphalt Roofing
- - Brick
- - Concrete
- - Drywall
- - Fiberglass
- - Plaster
- - Porcelain
- - Reusable Building Materials
- - Vermiculite Attic Insulation
- - Wood
-Landscaping, Landclearing
- - Brush, Woody Waste
- - Clean Soil
- - Contaminated Soil
- - Rock
- - Yard Waste
-Metal
- - Ferrous Metals
- - Nonferrous Metals
-Paper
- - Cardboard
- - Confidential Documents
- - Mixed Paper
- - Newspaper
- - Office Paper
- - Phone Books
- - Polycoated Cardboard
- - Pulltabs
- - Shredded Paper
-Selected Material(s)
-Reusable Building Materials
-Pick-up only.
-
-Serves businesses and residents.
-Wood
-Pick-up only.
 
 Serves businesses and residents.""",
 """Republic Services - Commercial Services & Sales

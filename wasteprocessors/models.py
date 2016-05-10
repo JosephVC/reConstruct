@@ -54,7 +54,7 @@ class WasteProcessor(models.Model):
 
     @classmethod
     def load_waste_processor_data(cls, all_companies):
-        """A method for loading and updating waste processor data, extracted
+        """A method for loading initial waste processor data, extracted
         from the City of Seattle's website and stored as a list of dictionaries
         in wasteprocessors.salvage_companies. Call from the command line like so:
         >>> import wasteprocessors.models as models
