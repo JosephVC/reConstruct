@@ -8,27 +8,29 @@ from wasteprocessors.views import material_search_view
 from userprofiles.models import UserType, Profile, ProjectType, Project
 from wasteprocessors.forms import WasteForm
 
-# Create your tests here.
+# create models shared across unit tests.
+def user_profile_test_models(self):
+    self.user = User.objects.create_user('rob', 'rob@email.com', 'password')
+    self.user_type = UserType.objects.create(user_type='contractor')
+    self.profile = Profile.objects.create(user=self.user,
+                                          user_type=self.user_type,
+                                          company='Alford Homes')
+    self.project_type = ProjectType.objects.create(project_type='New construction')
+    self.project = Project.objects.create(profile=self.profile,
+                                          project='Smith Residence',
+                                          project_slug='smith-residence',
+                                          project_type=self.project_type,
+                                          address='123 Smith Street Seattle WA 98115')
+
+# Used the ebook Real Python Part 3: Advanced Web Development with Django
+# as a reference for writing these tests
 
 class MaterialSearchTestCase(TestCase):
 
-    # Used the ebook Real Python Part 3: Advanced Web Development with Django
-    # as a reference for writing these tests
-
+    # use @classmethod to only run setup once, instead of before each test
+    @classmethod
     def setUp(self):
-        # create models for tests. might want to use a fixture for this rather than
-        # the django ORM
-        self.user = User.objects.create_user('rob', 'rob@email.com', 'password')
-        self.user_type = UserType.objects.create(user_type='contractor')
-        self.profile = Profile.objects.create(user=self.user,
-                                              user_type=self.user_type,
-                                              company='Alford Homes')
-        self.project_type = ProjectType.objects.create(project_type='New construction')
-        self.project = Project.objects.create(profile=self.profile,
-                                              project='Smith Residence',
-                                              project_slug='smith-residence',
-                                              project_type=self.project_type,
-                                              address='123 Smith Street Seattle WA 98115')
+        user_profile_test_models(self)
         # create a request object using the Django request factory
         request_factory = RequestFactory()
         self.request = request_factory.get(
@@ -49,9 +51,11 @@ class MaterialSearchTestCase(TestCase):
             )
         self.assertEqual(material_search.func, material_search_view)
 
+    # add test for POST request, 302 response
     def test_returns_appropriate_html_response_code(self):
         resp = material_search_view(self.request, self.project.project_slug)
         self.assertEquals(resp.status_code, 200)
+
 
     # Template and view tests
 
