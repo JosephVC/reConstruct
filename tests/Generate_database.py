@@ -7,12 +7,11 @@ from path import path
 django_project = path('../../reConstruct')
 print ('\nCleaning up old migrations')
 for i in django_project.walk():
-    if i.isdir():
-        if i.name == 'migrations':
+    if i.isdir() and i.name == 'migrations':
             print ('- Deleting folder = ', i)
-            #i.remove()
+            i.remove()
 
-# Move db.sqlite3 out of the way
+# Move db.sqlite3(if it exists) out of the way
 from datetime import datetime
 print ('\nMoving db.sqlite3 file out of the way if necessary')
 if os.path.isfile('../db.sqlite3'):
@@ -32,7 +31,7 @@ os.system("python ../manage.py flush")
 
 # Add migrations based upon apps
 print ('\nCreating migrations based upon app specifics')
-apps = ['myblog', 'userprofiles', 'wasteprocessors']
+apps = ['userprofiles', 'wasteprocessors']
 for j in apps: 
     os.system("python ../manage.py makemigrations " + j)
 
