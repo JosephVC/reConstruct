@@ -1,0 +1,24 @@
+Questions concerning mysite.urls.py
+================================================================
+Are the wasteprocessor url's only supposed to be included
+when the begining of the url contains "material-search"
+# url(r'^material-search/', include('wasteprocessors.urls')),
+url(r'^', include('wasteprocessors.urls')),
+What is this used for, example?
+
+in wasteprocessors urls.py "project/P<project_slug>-a" does not
+appear to match url(r'^project/(?P<project_slug>[-\w]+)/$'
+What are these used for, example?
+
+in wasteprocessors urls.py "results/P<waste_id>2" does not
+appear to match url(r'^results/(?P<waste_id>\d+)/$'
+What is this used for, example?
+
+Are there any admin.site urls, or is this just a placeholder?
+url(r'^admin/', admin.site.urls)
+
+Are there any registration urls, or is this just a placeholder?
+url(r'^accounts/', include('registration.backends.simple.urls'))
+
+Does the myblog app do anything for us or is it just residual
+and can be deleted?
