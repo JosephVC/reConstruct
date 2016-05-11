@@ -1,3 +1,10 @@
+# THE PURPOSE OF THIS SCRIPT IS TO LOAD RAW DATA INTO DJANGO THAT WILL THEN
+# NEED TO BE REFINED VIA THE ADMIN.
+
+# TO ADD NEW DATA, CREATE A NEW LIST OF COMPANIES AND
+# USE THE CODE BELOW TO CONVERT TO A LIST OF DICTS AND PASS TO
+# WASTEPROCESSOR.LOAD_WASTE_PROCESSOR_DATA()
+
 # company data copy and pasted from city of seattle website
 # http://your.kingcounty.gov/solidwaste/wdidw/category.asp?CatID=17%20%20
 # this was easier than web scraping for this site because of complex, table based
@@ -1690,7 +1697,6 @@ for company in companies:
     if 'Selected Material(s)' in c_dict['materials_accepted']:
         c_dict['materials_accepted'].remove('Selected Material(s)')
     # add services to description value
-    c_dict['description'] = ''
     for index, item in enumerate(c_list):
         if item =='Services':
             c_dict['description'] = c_list[index+1]
