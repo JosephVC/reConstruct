@@ -9,6 +9,8 @@ from userprofiles.models import UserType, Profile, ProjectType, Project
 from wasteprocessors.forms import WasteForm
 
 # create models shared across unit tests.
+# or see this for how to use fixtures: http://toastdriven.com/blog/2011/apr/10/guide-to-testing-in-django/
+# and this: http://toastdriven.com/blog/2011/apr/17/guide-to-testing-in-django-2/
 def user_profile_test_models(self):
     self.user = User.objects.create_user('rob', 'rob@email.com', 'password')
     self.user_type = UserType.objects.create(user_type='contractor')
