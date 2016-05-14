@@ -26,10 +26,18 @@ class WasteprocessorsURLsTestCase(TestCase):
         self.assertEqual(m_search.func, material_search_view)
 
 
-    def test_waste_id_url_uses_material_search_results(self):
+    def test_waste_id_url_uses_material_search_results_A(self):
         """
         Test that the waste_id (regex) of the site resolves to the 
         material_search_results function
         """
-        material_search_res = resolve('/results/P<waste_id>2/')
+        material_search_res = resolve('material-search/results/1/')
+        self.assertEqual(material_search_res.func, material_search_results)
+
+    def test_waste_id_url_uses_material_search_results_B(self):
+        """
+        Test that the waste_id (regex) of the site resolves to the 
+        material_search_results function
+        """
+        material_search_res = resolve('material-search/results/P<waste_id>2/')
         self.assertEqual(material_search_res.func, material_search_results)
