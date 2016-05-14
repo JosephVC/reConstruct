@@ -4,14 +4,11 @@ gitk --all
 
 git diff --name-status master..branchName
 
-Merging example (merging from master to testing_02)
-====================================================
-git checkout testing_02            // moves to testing_02 branch
-git checkout -b testing_02_merge   // creates testing_02_merge branch and switches to it.
-git merge master
-.... review new code and fix conflicts....
-git commit
-git checkout ba
-git merge ba-merge
-git branch -d ba-merge
-git merge master
+Rebaselining branch
+=============================
+First get the branch up to date
+>> git checkout testing_02
+>> git status
+>> git commit
+Then pull in updates from master
+>> git rebase master
