@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
-from wasteprocessors.views import salvage_companies_list, material_search_view, material_search_results
+from wasteprocessors.views import salvage_companies_list, \
+    material_search_view, material_search_results
 
 urlpatterns = [
     url(r'^salvage-companies/$',
