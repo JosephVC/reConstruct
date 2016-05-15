@@ -3,6 +3,7 @@
 {% block content %}
 <div class="jumbotron">
   <h1>Search results:</h1>
+  </br>
   <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">
@@ -21,8 +22,7 @@
         <div class="panel-heading">Companies that accept {{ waste_type.waste_type }} {{ material_type.material_type }}:</div>
         <div class="panel-body">
           {% for company in material_processors %}
-            <h3>{{ company.company }}</h3>
-            <!-- TODO: add more fields (see salvagecompanies.html) once you've entered the data-->
+            <h3><a href="{% url 'waste_processor_detail' company.id %}">{{ company.company }}</a></h3>
           {% endfor %}
           <h3><a href="{% url 'material_search' project.project_slug %}">New search</a></h3>
         </div>

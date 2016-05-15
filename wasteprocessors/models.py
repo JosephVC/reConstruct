@@ -1,5 +1,6 @@
 from django.db import models
 from userprofiles.models import Project
+from wasteprocessors.salvage_companies import all_companies
 
 
 class MaterialType(models.Model):
@@ -42,13 +43,34 @@ class WasteProcessor(models.Model):
     email = models.EmailField(blank=True)
     address = models.CharField(max_length=128, blank=True)
     materials_accepted = models.ManyToManyField(MaterialType, related_name='material_types')
-    will_pick_up = models.BooleanField()
-    will_purchase = models.BooleanField()
-    accepts_donations = models.BooleanField()
+    will_pick_up = models.BooleanField(default=False)
+    will_purchase = models.BooleanField(default=False)
+    accepts_donations = models.BooleanField(default=False)
     paid_service = models.BooleanField(default=False)
-    waste_types_accepted = models.ManyToManyField(WasteType, related_name='waste_types')
+    waste_types_accepted = models.ManyToManyField(WasteType, related_name='waste_types', blank=True)
 
     def __str__(self):
         return self.company
+
+    @classmethod
+    def load_waste_processor_data(cls, all_companies):
+        """A method for loading initial waste processor data, extracted
+        from the City of Seattle's website and stored as a list of dictionaries
+        in wasteprocessors.salvage_companies. Call from the command line like so:
+        >>> import wasteprocessors.models as models
+        >>> models.WasteProcessor.load_waste_processor_data(models.all_companies)"""
+        for c in all_companies:
+            waste_processor, created = cls.objects.get_or_create(company=c['company'])
+            waste_processor.description = c['description']
+            waste_processor.website = c['website']
+            waste_processor.phone = c['phone']
+            waste_processor.business_hours = c['business_hours']
+            waste_processor.email = c['email']
+            waste_processor.address = c['address']
+            for m in c['materials_accepted']:
+                material, created = MaterialType.objects.get_or_create(material_type=m)
+                waste_processor.materials_accepted.add(material)
+            waste_processor.save()
+
 
 

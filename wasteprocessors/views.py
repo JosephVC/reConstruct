@@ -7,10 +7,10 @@ from wasteprocessors.forms import WasteForm, SearchFilterForm
 
 # Create your views here.
 
-def salvage_companies_list(request):
-    salvage_companies = get_list_or_404(WasteProcessor)
-    context = {'salvage_companies': salvage_companies}
-    return render(request, 'salvagecompanies.html', context)
+def waste_processor_detail(request, waste_processor_id):
+    waste_processor = get_object_or_404(WasteProcessor, pk=waste_processor_id)
+    context = {'waste_processor': waste_processor}
+    return render(request, 'wasteprocessor.html', context)
 
 def material_search_view(request, project_slug):
     profile = get_object_or_404(Profile, pk=request.user.id)

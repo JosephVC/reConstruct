@@ -2,32 +2,60 @@
 
 {% block content %}
 <div class="jumbotron">
-{% if profile.company %}
-<h1>{{ profile.company }}</h1>
-{% else %}
-<p><a href="{% url 'edit_profile' %}">Create your profile</a></p>
-{% endif %}
-{% if profile.address %}
-<p>{{ profile.address }}</p>
-{% else %}
-<p><a href="{% url 'edit_profile' %}">Add your address</a></p>
-{% endif %}
-{% if profile.phone %}
-<p>{{ profile.phone }}</p>
-{% else %}
-<p><a href="{% url 'edit_profile' %}">Add your phone number</a></p>
-{% endif %}
-{% if profile.user.email %}
-<p>{{ profile.user.email }}</p>
-{% else %}
-<p><a href="{% url 'edit_profile' %}">Add your email</a></p>
-{% endif %}
-<h2>Projects:</h2>
-{% if profile.projects %}
-    {% for project in profile.projects.all %}
-        <p><a href="{% url 'material_search' project.project_slug %}">{{ project.project }}</a></p>
-    {% endfor %}
-{% endif %}
-<p><a href="{% url 'new_project' %}">Add a new project to search for salvage companies and recycling services near you.</a></p>
+<h1>reConstruct</h1>
+<p>Welcome to reConstruct, a website that connects building contractors and home owners 
+with salvage companies and recycling services. Update your profile information below
+and add new construction projects to search for specific construction materials and
+find nearby waste processing services.</p>
+</br>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">Profile:</div>
+        <div class="panel-body">
+            {% if profile.company %}
+            <h3>Company:</h3><p>{{ profile.company }}</p>
+            {% else %}
+            <p><a href="{% url 'edit_profile' %}">Create your profile</a></p>
+            {% endif %}
+            {% if profile.address %}
+            <h3>Address:</h3><p>{{ profile.address }}</p>
+            {% else %}
+            <p><a href="{% url 'edit_profile' %}">Add your address</a></p>
+            {% endif %}
+            <h3>Phone:</h3>{% if profile.phone %}
+            <p>{{ profile.phone }}</p>
+            {% else %}
+            <p><a href="{% url 'edit_profile' %}">Add your phone number</a></p>
+            {% endif %}
+            {% if profile.user.email %}
+            <h3>Email:</h3><p>{{ profile.user.email }}</p>
+            {% else %}
+            <p><a href="{% url 'edit_profile' %}">Add your email</a></p>
+            {% endif %}
+            <p><a href="{% url 'edit_profile' %}">Edit your profile</a></p>
+            </div>
+          </div>
+    </div>
+    <div class="col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">Projects:</div>
+        <div class="panel-body">
+        {% if profile.projects %}
+            {% for project in profile.projects.all %}
+                <p><a href="{% url 'material_search' project.project_slug %}">{{ project.project }}</a></p>
+            {% endfor %}
+        {% endif %}
+        <p><a href="{% url 'new_project' %}">Add a new project to search for salvage companies and recycling services near you.</a></p>
+        </div>
+        </div>
+    </div>
+
+    </div>
+      
+
+
+  </div>
+
 </div>
 {% endblock %}
