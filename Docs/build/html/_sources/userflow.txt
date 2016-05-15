@@ -30,6 +30,28 @@ The user can now add projects.
 .. figure:: images/reConstruct_add_project.png
    :align: center
 
+Details of the project are added here.
+
+.. figure:: images/reConstruct_material_search.png
+   :align: center
+
+Define the waste being generated to find local companies to handle it.
+
+.. figure:: images/reConstruct_salvage_search_results.png
+   :align: center
+
+A local company dealing in plaster appears. 
+
+.. figure:: images/reConstruct_search_filter.png
+   :align: center
+
+Search results can be filtered through checking the lefthand boxes.  There appears to be no local company accepting plaster that both performs onsite pickups and accepts donations.  
+
+.. figure:: images/reConstruct_profile_page_with_projects.png
+   :align: center
+
+After projects have been addded, they will appear 
+
 
 **Logging In To An Existing Account**
 =====================================
