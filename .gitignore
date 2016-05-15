@@ -2,3 +2,6 @@
 *.pyc
 *.db
 *.*~
+
+# old git repo
+/.git-old

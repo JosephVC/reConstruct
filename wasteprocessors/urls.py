@@ -6,7 +6,7 @@ urlpatterns = [
     url(r'^waste-processors/(?P<waste_processor_id>\d+)/$',
         waste_processor_detail,
         name="waste_processor_detail"),
-    url(r'^project/(?P<project_slug>[-\w]+)/$',
+    url(r'^project/(?P<project_id>\d+)/$',
         material_search_view,
         name="material_search"),
     url(r'^results/(?P<waste_id>\d+)/$',

@@ -24,7 +24,7 @@
           {% for company in material_processors %}
             <h3><a href="{% url 'waste_processor_detail' company.id %}">{{ company.company }}</a></h3>
           {% endfor %}
-          <h3><a href="{% url 'material_search' project.project_slug %}">New search</a></h3>
+          <h3><a href="{% url 'material_search' project.id %}">New search</a></h3>
         </div>
         </div>
     </div>
