@@ -53,7 +53,7 @@ def create_project_view(request):
 			form.save()
 			return HttpResponseRedirect(
 				'/material-search/project/{}/'.format(
-				project.project_slug))
+				project.id))
 	else:
 		form =  ProjectForm()
 	return render(request, 'project.html', {'form': form})
