@@ -12,3 +12,7 @@ First get the branch up to date
 >> git commit
 Then pull in updates from master
 >> git rebase master
+
+Overwrite branch file with master file
+========================================
+git checkout FROM_BRANCH_NAME path/to/file

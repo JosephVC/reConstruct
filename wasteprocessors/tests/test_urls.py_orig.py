@@ -2,9 +2,10 @@ from django.test import TestCase
 from django.core.urlresolvers import resolve
 
 from wasteprocessors.views import \
-    waste_processor_detail, \
+    salvage_companies_list, \
     material_search_view, \
     material_search_results
+
 
 class WasteprocessorsURLsTestCase(TestCase):
 
@@ -13,21 +14,38 @@ class WasteprocessorsURLsTestCase(TestCase):
         Test that the salvage_companies of the site resolves to the 
         salvage_companies_list function
         """
-        salvage_companies = resolve('/material-search/waste-processors/1/')
-        self.assertEqual(salvage_companies.func, waste_processor_detail)
+        salvage_companies = resolve('/salvage-companies/')
+        self.assertEqual(salvage_companies.func, salvage_companies_list)
 
     def test_material_search_url_uses_material_search_view(self):
         """
         Test that the /profile of the site resolves to the 
         profile_view function
         """
-        m_search = resolve('/material-search/project/3/')
+        m_search = resolve('/project/laurelhurst-house/')
         self.assertEqual(m_search.func, material_search_view)
 
+<<<<<<< HEAD
     def test_waste_id_url_uses_material_search_results(self):
+=======
+
+    def test_waste_id_url_uses_material_search_results_A(self):
+>>>>>>> 58e475849e8da95373fc6c4ede6cd6b975b59d13
         """
         Test that the waste_id (regex) of the site resolves to the 
         material_search_results function
         """
+<<<<<<< HEAD
         material_search_res = resolve('/material-search/results/1/')
+=======
+        material_search_res = resolve('material-search/results/1/')
+>>>>>>> 58e475849e8da95373fc6c4ede6cd6b975b59d13
+        self.assertEqual(material_search_res.func, material_search_results)
+
+    def test_waste_id_url_uses_material_search_results_B(self):
+        """
+        Test that the waste_id (regex) of the site resolves to the 
+        material_search_results function
+        """
+        material_search_res = resolve('material-search/results/P<waste_id>2/')
         self.assertEqual(material_search_res.func, material_search_results)

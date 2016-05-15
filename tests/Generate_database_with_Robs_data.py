@@ -40,5 +40,5 @@ print ('\nPerforming migrations')
 os.system("python ../manage.py migrate")
 
 # Populate database
-print ('\nPopulating database')
-os.system("python ../manage.py loaddata rob_15_May.json")
+# print ('\nPopulating database')
+# os.system("python ../manage.py loaddata rob_15_May.json")
