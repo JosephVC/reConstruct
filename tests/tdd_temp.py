@@ -1,8 +1,6 @@
 from selenium import webdriver
 from django.test import Client
 from myblog.models import Post, Category
-import datetime
-client = Client()
 import unittest # May not be necessary
 import TestCase # Django test capability derived from unittest
 
@@ -11,25 +9,27 @@ import TestCase # Django test capability derived from unittest
 # ./manage.py runserver) that opens the server as necessary during test.
 from django.test import LiveServerTestCase
 
+import datetime  ##### may not be necessary????
+client = Client()
 
 class Setup_Teardown(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
-        self.verificationErrors = []
+        self.browser.implicitly_wait(2)
+        self.verificationErrors = []  # initialize verification error list
 
     def tearDown(self):
         self.browser.quit()
-        self.assertEqual([], self.verificationErrors)
-
+        self.assertEqual([], self.verificationErrors)  # Generates a list  of
+        # assert errors for review at end of test
 
 class HomePage(Setup_Teardown):
 
     def test_homepage(self):
         response = client.get('/')
         try:
-            self.assertEqual(response.status_code, 201)
+            self.assertEqual(response.status_code, 201) ###### return to 200
         except AssertionError as e:
             self.verificationErrors.append('test_homepage: '+str(e))
 
