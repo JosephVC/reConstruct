@@ -9,7 +9,7 @@ print ('\nCleaning up old migrations')
 for i in django_project.walk():
     if i.isdir() and i.name == 'migrations':
             print ('- Deleting folder = ', i)
-            i.remove()
+            i.rmtree()
 
 # Move db.sqlite3(if it exists) out of the way
 from datetime import datetime
@@ -39,6 +39,15 @@ for j in apps:
 print ('\nPerforming migrations')
 os.system("python ../manage.py migrate")
 
+# Cleanup the django deployment to remove new migrations
+django_project = path('../../reConstruct')
+print ('\nCleaning up new migrations')
+for i in django_project.walk():
+    if i.isdir() and i.name == 'migrations':
+            print ('- Deleting folder = ', i)
+            i.rmtree()
+
 # Populate database
-# print ('\nPopulating database')
-# os.system("python ../manage.py loaddata rob_15_May.json")
+print ('\nPopulating database')
+#os.system("python ../manage.py loaddata rob_play.json")
+os.system("python ../manage.py loaddata db_test.json")
