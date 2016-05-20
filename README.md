@@ -1,8 +1,5 @@
 # reConstruct
 
-===========
-reConstruct
-===========
 
 reConstruct is a Django app allowing homeowners and contractors to readily 
 contact various waste processors (recycling, salvage, etc.).  New users 
