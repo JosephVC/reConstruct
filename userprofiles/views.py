@@ -41,7 +41,7 @@ def edit_profile_view(request):
 
 def create_project_view(request):
 	# get the user's profile
-	profile = get_object_or_404(Profile, pk=request.user.id)
+	profile = get_object_or_404(Profile, user=request.user)
 	if request.method == 'POST':
 		# create a new project for this profile
 		project = Project(profile=profile)

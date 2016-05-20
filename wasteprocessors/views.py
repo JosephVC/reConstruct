@@ -13,7 +13,7 @@ def waste_processor_detail(request, waste_processor_id):
     return render(request, 'wasteprocessor.html', context)
 
 def material_search_view(request, project_id):
-    profile = get_object_or_404(Profile, pk=request.user.id)
+    profile = get_object_or_404(Profile, user=request.user)
     project = get_object_or_404(Project, pk=project_id)
     if request.method == 'POST':
         waste = Waste(project=project)
