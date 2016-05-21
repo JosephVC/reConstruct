@@ -5,3 +5,6 @@
 
 # old git repo
 /.git-old
+
+# coverage testing
+.coverage
