@@ -42,7 +42,7 @@
                 <li><a href="{% url 'logout' %}">logout</a></li>
               {% else %}
                 <li><a href="{% url 'login' %}">login</a></li>
-                <li><a href="http://localhost:8000/accounts/register/">sign up</a></li>
+                <li><a href="{% url 'registration_register' %}">sign up</a></li>
               {% endif %}
              </ul>
           </div><!-- /.navbar-collapse -->
