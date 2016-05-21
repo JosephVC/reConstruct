@@ -1,0 +1,3 @@
+Created a Backend_Client model in userprofiles.models
+Created a backends.py in the userprofiles app
+Added AUTHENTICATION_BACKENDS variable to settings.py

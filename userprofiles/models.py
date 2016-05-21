@@ -44,3 +44,7 @@ class Project(models.Model):
 
     def __str__(self):
         return self.project
+
+class Client(models.Model):
+   email = models.EmailField(unique=True, max_length=100)
+   password = models.CharField(max_length=128)

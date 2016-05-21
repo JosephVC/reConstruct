@@ -49,5 +49,5 @@ for i in django_project.walk():
 
 # Populate database
 print ('\nPopulating database')
-#os.system("python ../manage.py loaddata rob_play.json")
-os.system("python ../manage.py loaddata db_test.json")
+os.system("python ../manage.py loaddata ../userprofiles/fixtures/userprofile_test_data.json")
+os.system("python ../manage.py loaddata ../wasteprocessors/fixtures/wasteprocessors_test_data.json")
