@@ -14,7 +14,7 @@ class WasteprocessorsURLsTestCase(TestCase):
         Test that the salvage_companies of the site resolves to the 
         salvage_companies_list function
         """
-        salvage_companies = resolve('/salvage-companies/')
+        salvage_companies = resolve('/material-search/waste-processors/1/')
         self.assertEqual(salvage_companies.func, salvage_companies_list)
 
     def test_material_search_url_uses_material_search_view(self):
