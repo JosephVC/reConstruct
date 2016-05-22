@@ -1710,14 +1710,3 @@ for company in companies:
             c_dict['description'] += i
     all_companies.append(c_dict)
 
-
-
-
-
-
-
-
-
-
-
-
