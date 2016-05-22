@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.core.urlresolvers import resolve
 
 from wasteprocessors.views import \
-    salvage_companies_list, \
+    waste_processor_detail, \
     material_search_view, \
     material_search_results
 
