@@ -3,13 +3,8 @@ from .models import Profile
 class ClientAuthBackend(object):
 
     def authenticate(self, auth_user_id=None, password=None):
-<<<<<<< HEAD
-        try:
-            from pdb import set_trace
-=======
         from pdb import set_trace
         try:
->>>>>>> 8c7bbec946b463cfbecc13b78f6a5c65686b52f7
             print("\nauth_user_id = ", auth_user_id)
             auth_user_username = Profile.objects.get(user=auth_user_id)
             print("\nuser = ", user)
