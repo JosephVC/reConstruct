@@ -2,20 +2,16 @@ from .models import Profile
 
 class ClientAuthBackend(object):
 
-    def authenticate(self, auth_user_id=None, password=None):
-        from pdb import set_trace
+    def authenticate(self, username=None, password=None):
         try:
-            print("\nauth_user_id = ", auth_user_id)
-            auth_user_username = Profile.objects.get(user=auth_user_id)
-            print("\nuser = ", user)
-            print("\nauth_user_username = ", auth_user_username)
-            return auth_user_username
+            user = Profile.objects.get(user_id=username)
+            return user
 
-            if password == 'master_woo':
-                # Authentication success returns the user
-                return auth_user_username
+            if password == 'master':
+                # Authentication success by returning the user
+                return user
             else:
-                # Authentication failure returns None
+                # Authentication fails if None is returned
                 return None
         except Profile.DoesNotExist:
             return None
