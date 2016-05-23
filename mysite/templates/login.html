@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid">
 <div class="jumbotron">
   <h1>Log in:</h1>
 <p>Existing user? Log in with your credentials below:</p>
@@ -8,4 +9,6 @@
   {{ form.as_p }}
   <p><input class="btn btn-primary btn-lg" type="submit" value="Log In"></p>
 </form>
+</div>
+</div>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-<!-- Full Width Image Header with Logo -->
+    <!-- Full Width Image Header with Logo -->
     <!-- Image backgrounds are set within the full-width-pics.css file. -->
     <header class="image-bg-fluid-height">
         <img class="img-responsive img-center" src="{% static 'images/recycle-logo.png' %}" alt="">
@@ -14,7 +14,8 @@
                 <div class="col-lg-12">
                     <h1 class="section-heading">Welcome to reConstruct</h1>
                     <p class="lead section-lead">A website that connects building professionals and home owners
-with salvage companies, recycling and reclamation services.</p>
+with salvage companies, recycling and reclamation services. Create your free account below to search for services in 
+your area.</p>
                 <p><a class="btn btn-primary btn-lg" href="{% url 'registration_register' %}" role="button">Sign up</a>
                 <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Log in</a></p>
 
