@@ -4,9 +4,26 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+/* Custom */
 body {
     margin-top: 40px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    /* adjusted from 50 to 40 */
+}
+
+/* Custom */
+.navbar-inverse {
+    color: white;
+    background-color: #4D8555;
+    border-color: #4D8555;
+}
+
+/* Custom */
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+/* Custom */
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
 }
 
 .image-bg-fluid-height,
@@ -19,12 +36,12 @@ body {
 }
 
 .image-bg-fluid-height {
-    background: url('/static/images/demolition_waste.jpg') no-repeat center center scroll;
+    background: url('/static/images/Construction_Waste.jpg') no-repeat center center scroll;
     padding: 100px 0;
 }
 
 .image-bg-fixed-height {
-    background: url('/static/images/demolition_waste.jpg') no-repeat center center scroll;
+    background: url('/static/images/Construction_Waste.jpg') no-repeat center center scroll;
     height: 450px;
 }
 
@@ -32,8 +49,9 @@ body {
     margin: 0 auto;
 }
 
+/* Custom */
 section {
-    padding: 75px 0;
+    padding: 25px 0;
 }
 
 .section-heading {
@@ -49,6 +67,7 @@ section {
     margin: 30px 0;
 }
 
+/* Custom */
 .jumbotron {
     background-color: white;
 }
