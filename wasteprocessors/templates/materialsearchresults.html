@@ -2,8 +2,10 @@
 
 {% block content %}
 <div class="container-fluid">
+
 <div class="jumbotron">
   <h1>Search results:</h1>
+  <div id="map" class="container-fluid"></div>
   </br>
   <div class="row">
   <div class="col-md-4">
@@ -38,4 +40,15 @@
 
 </div>
 
+{% endblock %}
+{% block map_script %}
+<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+</script>
 {% endblock %}

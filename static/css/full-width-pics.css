@@ -72,6 +72,11 @@ section {
     background-color: white;
 }
 
+/* Custom */
+#map {
+    height: 400px;
+}
+
 footer {
     margin: 50px 0;
 }

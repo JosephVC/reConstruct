@@ -60,5 +60,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Google Maps API -->
+    {% block map_script %}{% endblock %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUpzrFpwR4gGj_MBG2xxyOFsVllJvqKjw&callback=initMap"
+    async defer></script>
   </body>
 </html>
