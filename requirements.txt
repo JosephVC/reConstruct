@@ -8,6 +8,7 @@ django-debug-toolbar==1.4
 django-favicon==0.1.2
 django-registration==2.0.4
 gnureadline==6.3.3
+googlemaps==2.4.3
 ipython==4.1.1
 ipython-genutils==0.1.0
 mock==2.0.0
