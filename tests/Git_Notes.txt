@@ -1,0 +1,23 @@
+git diff --stat --color master..branchName
+
+gitk --all
+
+git diff --name-status master..branchName
+
+Rebaselining branch
+=============================
+First get the branch up to date
+>> git checkout testing_02
+>> git status
+>> git commit
+Then pull in updates from master
+>> git rebase master
+
+Overwrite branch file with master file
+========================================
+git checkout FROM_BRANCH_NAME path/to/file
+
+Compare file from two branches
+===============================
+git diff mybranch/myfile master/myfile
+

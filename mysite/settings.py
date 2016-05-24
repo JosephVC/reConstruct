@@ -78,9 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-AUTHENTICATION_BACKENDS = ('userprofiles.backends.ClientAuthBackend', 
-    'django.contrib.auth.backends.ModelBackend')
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -136,3 +133,8 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
+
+# Order matters for this so I put if after the login url
+# If it is after WSGI_APPLICATION variable the site fails
+AUTHENTICATION_BACKENDS = ('userprofiles.backends.ClientAuthBackend', 
+   'django.contrib.auth.backends.ModelBackend')
