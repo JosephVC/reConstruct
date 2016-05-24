@@ -74,7 +74,8 @@ section {
 
 /* Custom */
 #map {
-    height: 400px;
+    height: 275px;
+    margin-bottom: 25px;
 }
 
 footer {
