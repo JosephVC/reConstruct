@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="container-fluid">
@@ -43,12 +44,45 @@
 {% endblock %}
 {% block map_script %}
 <script>
-      var map;
+      // pass template variables to the javascript
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+        var myLatLng = {
+          lat: {{ project.latitude }},
+          lng: {{ project.longitude }}
+        };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 9,
+          center: myLatLng
         });
+
+        var image = '{% static "images/home.png" %}';
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          icon: image,
+          title: '{{ project.project }}'
+        });
+
+        {% for result in material_processors %}
+        {% if result.latitude %}
+        var recycleMarker = new google.maps.Marker({
+          position: {lat: {{ result.latitude }}, lng: {{ result.longitude }}},
+          map: map,
+        });
+        var infowindow = new google.maps.InfoWindow({
+          content: '{{ result.company }} {{ result.address }}'
+        });
+        // see this tut for binding info windows to multiple markers:
+        // https://leewc.com/articles/google-maps-infowindow/
+        recycleMarker.infowindow = infowindow
+        recycleMarker.addListener('click', function() {
+          return this.infowindow.open(map, this);
+        })
+        {% endif %}
+        {% endfor %}
+
+
       }
 </script>
 {% endblock %}
