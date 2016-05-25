@@ -2,7 +2,7 @@ import geocoder
 
 from django.db import models
 
-from userprofiles.models import Project
+from userprofiles.models import Location, Project
 from wasteprocessors.salvage_companies import all_companies
 
 
@@ -35,7 +35,7 @@ class Waste(models.Model):
     def __str__(self):
         return self.material_type.material_type
 
-class WasteProcessor(models.Model):
+class WasteProcessor(Location):
     """A model for storing data related to a specific construction waste
     processing business or service."""
     company = models.CharField(max_length=128)
@@ -44,7 +44,7 @@ class WasteProcessor(models.Model):
     phone = models.CharField(max_length=15, blank=True)
     business_hours = models.TextField(blank=True)
     email = models.EmailField(blank=True)
-    address = models.CharField(max_length=128, blank=True)
+    # address = models.CharField(max_length=128, blank=True)
     materials_accepted = models.ManyToManyField(MaterialType, related_name='material_types')
     will_pick_up = models.BooleanField(default=False)
     will_purchase = models.BooleanField(default=False)

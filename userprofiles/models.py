@@ -35,16 +35,16 @@ class ProjectType(models.Model):
     def __str__(self):
         return self.project_type
 
-# refactor to use Place superclass for Project and WasteProcessor? so you dont
-# repeat code
-class Project(models.Model):
-    """A model for storing a specific construction project, registered
-    by a user along with its associated data."""
-    profile = models.ForeignKey(Profile, related_name='projects')
-    project = models.CharField(max_length=128, blank=True)
-    project_slug = models.SlugField(blank=True)
-    project_type = models.ForeignKey(ProjectType, null=True)
+class Location(models.Model):
+    """Abstract base model for other location based models. Uses geocoder
+    package to retrieve latitude and longitude coordinates from stored
+    address data for use in mapping search feature."""
     address = models.CharField(max_length=128, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+
+    class Meta:
+        abstract = True
 
     def get_lat_and_lng(self):
         geocode_result = geocoder.osm(self.address)
@@ -55,6 +55,26 @@ class Project(models.Model):
         except IndexError:
             self.latitude = None
             self.longitude = None
+        self.save()
+
+class Project(Location):
+    """A model for storing a specific construction project, registered
+    by a user along with its associated data."""
+    profile = models.ForeignKey(Profile, related_name='projects')
+    project = models.CharField(max_length=128, blank=True)
+    project_slug = models.SlugField(blank=True)
+    project_type = models.ForeignKey(ProjectType, null=True)
+    # address = models.CharField(max_length=128, blank=True)
+
+    # def get_lat_and_lng(self):
+    #     geocode_result = geocoder.osm(self.address)
+    #     latlng = geocode_result.latlng
+    #     try:
+    #         self.latitude = latlng[0]
+    #         self.longitude = latlng[1]
+    #     except IndexError:
+    #         self.latitude = None
+    #         self.longitude = None
 
 
     def __str__(self):
