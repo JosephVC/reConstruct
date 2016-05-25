@@ -51,11 +51,9 @@ def material_search_results(request, waste_id):
             # page with the new search filters
     else:
         form = SearchFilterForm()
-    waste.project.get_latitude()
-    waste.project.get_longitude()
+    waste.project.get_lat_and_lng()
     for p in material_processors:
-        p.get_latitude()
-        p.get_longitude()
+        p.get_lat_and_lng()
     context = {'profile': waste.project.profile,
                'project': waste.project,
                'material_type': waste.material_type,

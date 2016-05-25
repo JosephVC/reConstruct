@@ -1,4 +1,4 @@
-import googlemaps
+import geocoder
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -46,16 +46,15 @@ class Project(models.Model):
     project_type = models.ForeignKey(ProjectType, null=True)
     address = models.CharField(max_length=128, blank=True)
 
-    def get_latitude(self):
-        gmaps = googlemaps.Client(key='AIzaSyBUpzrFpwR4gGj_MBG2xxyOFsVllJvqKjw')
-        # returns a dict of geocoding data
-        geocode_result = gmaps.geocode(self.address)
-        self.latitude = geocode_result[0]['geometry']['location']['lat']
-
-    def get_longitude(self):
-        gmaps = googlemaps.Client(key='AIzaSyBUpzrFpwR4gGj_MBG2xxyOFsVllJvqKjw')
-        geocode_result = gmaps.geocode(self.address)
-        self.longitude = geocode_result[0]['geometry']['location']['lng']
+    def get_lat_and_lng(self):
+        geocode_result = geocoder.osm(self.address)
+        latlng = geocode_result.latlng
+        try:
+            self.latitude = latlng[0]
+            self.longitude = latlng[1]
+        except IndexError:
+            self.latitude = None
+            self.longitude = None
 
 
     def __str__(self):

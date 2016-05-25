@@ -1,4 +1,4 @@
-import googlemaps
+import geocoder
 
 from django.db import models
 
@@ -75,21 +75,14 @@ class WasteProcessor(models.Model):
                 waste_processor.materials_accepted.add(material)
             waste_processor.save()
 
-    def get_latitude(self):
-        gmaps = googlemaps.Client(key='AIzaSyBUpzrFpwR4gGj_MBG2xxyOFsVllJvqKjw')
-        # returns a dict of geocoding data
-        geocode_result = gmaps.geocode(self.address)
+    def get_lat_and_lng(self):
+        geocode_result = geocoder.osm(self.address)
+        latlng = geocode_result.latlng
         try:
-            self.latitude = geocode_result[0]['geometry']['location']['lat']
+            self.latitude = latlng[0]
+            self.longitude = latlng[1]
         except IndexError:
             self.latitude = None
-
-    def get_longitude(self):
-        gmaps = googlemaps.Client(key='AIzaSyBUpzrFpwR4gGj_MBG2xxyOFsVllJvqKjw')
-        geocode_result = gmaps.geocode(self.address)
-        try:
-            self.longitude = geocode_result[0]['geometry']['location']['lng']
-        except IndexError:
             self.longitude = None
 
 
