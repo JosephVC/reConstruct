@@ -75,15 +75,6 @@ class WasteProcessor(Location):
                 waste_processor.materials_accepted.add(material)
             waste_processor.save()
 
-    def get_lat_and_lng(self):
-        geocode_result = geocoder.osm(self.address)
-        latlng = geocode_result.latlng
-        try:
-            self.latitude = latlng[0]
-            self.longitude = latlng[1]
-        except IndexError:
-            self.latitude = None
-            self.longitude = None
 
 
 
