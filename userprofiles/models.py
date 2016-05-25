@@ -47,6 +47,11 @@ class Location(models.Model):
         abstract = True
 
     def get_lat_and_lng(self):
+        """This method converts an address to latitude and longitude
+        coordinates and saves these values to model instance. Use the
+        django shell to call method on new waste processors afers entering
+        in their address through the admin. Call on new projects when they
+        are created in create_project_view."""
         geocode_result = geocoder.osm(self.address)
         latlng = geocode_result.latlng
         try:

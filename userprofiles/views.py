@@ -49,6 +49,7 @@ def create_project_view(request):
 		if form.is_valid():
 			# generate project slug from project name
 			project.project_slug = slugify(form.cleaned_data['project'])
+			project.get_lat_and_lng()
 			project.save()
 			form.save()
 			return HttpResponseRedirect(
