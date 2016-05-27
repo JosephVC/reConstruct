@@ -1,0 +1,6 @@
+FAQ
+***
+
+How do I sign up as a new user?
+===============================
+Follow the documentation regarding new user sign up.

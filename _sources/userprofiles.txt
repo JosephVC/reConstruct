@@ -1,0 +1,78 @@
+userprofiles package
+====================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    userprofiles.migrations
+    userprofiles.tests
+
+Submodules
+----------
+
+userprofiles.admin module
+-------------------------
+
+.. automodule:: userprofiles.admin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+userprofiles.apps module
+------------------------
+
+.. automodule:: userprofiles.apps
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+userprofiles.forms module
+-------------------------
+
+.. automodule:: userprofiles.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+userprofiles.models module
+--------------------------
+
+.. automodule:: userprofiles.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+userprofiles.tests module
+-------------------------
+
+.. automodule:: userprofiles.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+userprofiles.urls module
+------------------------
+
+.. automodule:: userprofiles.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+userprofiles.views module
+-------------------------
+
+.. automodule:: userprofiles.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: userprofiles
+    :members:
+    :undoc-members:
+    :show-inheritance:

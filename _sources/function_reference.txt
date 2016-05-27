@@ -1,0 +1,30 @@
+Function Reference
+******************
+
+
+This is the function reference documentation.    
+=============================================
+
+home_view
+=========
+The home_view function in userprofiles.views renders the home.html template for new users, and redirects to the '/profile/' url for logged in users. So if you want to test the http response for the root url, it should return '200' for new users and '302' (http redirect) for logged in users.
+
+profile_view
+============
+This calls the profile_view in userprofiles.views.  This view redirects to the '/profile/edit/' url if the user has not created a profile. If they have already created their profile, it renders profile.html.
+
+edit_profile_view
+-----------------
+Calls edit_profile_view in userprofiles.views.  This view renders the edit profile.html template for GET requests and redirects back to '/profile/' for successful form submission via POST request. This form can be used to either create or edit an existing profile.
+
+create_project_view
+-------------------
+Calls create_project_view in userprofiles.views.  This view renders project.html for GET requests and redirects to '/material-search/project/<project-slug>/' for successful POST requests. So if the user successfully creates a project called Smith Residence, this view redirects to '/material-search/project/smith-residence/'.
+
+material_search_view
+--------------------
+Calls material_search_view in wasteprocessors.views which renders the material search.html template for GET requests and redirects to '/material-search/results/<waste-id>/'. The waste ID is the primary key for the Waste object that gets created when the user submits this form. The purpose of the Waste object is to connect a user with a project to a specific material, and eventually to a WasteProcessor, although this functionality is still a work in progress. For now, it returns the search results for a specific material connected to a specific project.
+
+material_search_results
+-----------------------
+Calls material_search_results in wasteprocessors.views which renders materialsearchresults.html for both GET and POST requests. In this case, the POST requests are the form submissions from the check boxes that filter the results by returning the same template, with a modified context dictionary. 

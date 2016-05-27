@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="English">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Function Reference &mdash; reConstruct 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reConstruct 0.1 documentation" href="index.html" />
+    <link rel="prev" title="FAQ" href="faq.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="function-reference">
+<h1>Function Reference<a class="headerlink" href="#function-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="this-is-the-function-reference-documentation">
+<h2>This is the function reference documentation.<a class="headerlink" href="#this-is-the-function-reference-documentation" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="home-view">
+<h2>home_view<a class="headerlink" href="#home-view" title="Permalink to this headline">¶</a></h2>
+<p>The home_view function in userprofiles.views renders the home.html template for new users, and redirects to the &#8216;/profile/&#8217; url for logged in users. So if you want to test the http response for the root url, it should return &#8216;200&#8217; for new users and &#8216;302&#8217; (http redirect) for logged in users.</p>
+</div>
+<div class="section" id="profile-view">
+<h2>profile_view<a class="headerlink" href="#profile-view" title="Permalink to this headline">¶</a></h2>
+<p>This calls the profile_view in userprofiles.views.  This view redirects to the &#8216;/profile/edit/&#8217; url if the user has not created a profile. If they have already created their profile, it renders profile.html.</p>
+<div class="section" id="edit-profile-view">
+<h3>edit_profile_view<a class="headerlink" href="#edit-profile-view" title="Permalink to this headline">¶</a></h3>
+<p>Calls edit_profile_view in userprofiles.views.  This view renders the edit profile.html template for GET requests and redirects back to &#8216;/profile/&#8217; for successful form submission via POST request. This form can be used to either create or edit an existing profile.</p>
+</div>
+<div class="section" id="create-project-view">
+<h3>create_project_view<a class="headerlink" href="#create-project-view" title="Permalink to this headline">¶</a></h3>
+<p>Calls create_project_view in userprofiles.views.  This view renders project.html for GET requests and redirects to &#8216;/material-search/project/&lt;project-slug&gt;/&#8217; for successful POST requests. So if the user successfully creates a project called Smith Residence, this view redirects to &#8216;/material-search/project/smith-residence/&#8217;.</p>
+</div>
+<div class="section" id="material-search-view">
+<h3>material_search_view<a class="headerlink" href="#material-search-view" title="Permalink to this headline">¶</a></h3>
+<p>Calls material_search_view in wasteprocessors.views which renders the material search.html template for GET requests and redirects to &#8216;/material-search/results/&lt;waste-id&gt;/&#8217;. The waste ID is the primary key for the Waste object that gets created when the user submits this form. The purpose of the Waste object is to connect a user with a project to a specific material, and eventually to a WasteProcessor, although this functionality is still a work in progress. For now, it returns the search results for a specific material connected to a specific project.</p>
+</div>
+<div class="section" id="material-search-results">
+<h3>material_search_results<a class="headerlink" href="#material-search-results" title="Permalink to this headline">¶</a></h3>
+<p>Calls material_search_results in wasteprocessors.views which renders materialsearchresults.html for both GET and POST requests. In this case, the POST requests are the form submissions from the check boxes that filter the results by returning the same template, with a modified context dictionary.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Function Reference</a><ul>
+<li><a class="reference internal" href="#this-is-the-function-reference-documentation">This is the function reference documentation.</a></li>
+<li><a class="reference internal" href="#home-view">home_view</a></li>
+<li><a class="reference internal" href="#profile-view">profile_view</a><ul>
+<li><a class="reference internal" href="#edit-profile-view">edit_profile_view</a></li>
+<li><a class="reference internal" href="#create-project-view">create_project_view</a></li>
+<li><a class="reference internal" href="#material-search-view">material_search_view</a></li>
+<li><a class="reference internal" href="#material-search-results">material_search_results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="faq.html" title="previous chapter">FAQ</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/function_reference.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Robert Alford, Eric Vegors, Joseph Cardenas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/function_reference.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

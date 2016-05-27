@@ -1,0 +1,86 @@
+wasteprocessors package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    wasteprocessors.migrations
+    wasteprocessors.tests
+
+Submodules
+----------
+
+wasteprocessors.admin module
+----------------------------
+
+.. automodule:: wasteprocessors.admin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+wasteprocessors.apps module
+---------------------------
+
+.. automodule:: wasteprocessors.apps
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+wasteprocessors.forms module
+----------------------------
+
+.. automodule:: wasteprocessors.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+wasteprocessors.models module
+-----------------------------
+
+.. automodule:: wasteprocessors.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+wasteprocessors.salvage_companies module
+----------------------------------------
+
+.. automodule:: wasteprocessors.salvage_companies
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+wasteprocessors.tests module
+----------------------------
+
+.. automodule:: wasteprocessors.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+wasteprocessors.urls module
+---------------------------
+
+.. automodule:: wasteprocessors.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+wasteprocessors.views module
+----------------------------
+
+.. automodule:: wasteprocessors.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: wasteprocessors
+    :members:
+    :undoc-members:
+    :show-inheritance:
