@@ -1,5 +1,6 @@
 # reConstruct
 
+http://ec2-52-37-97-228.us-west-2.compute.amazonaws.com/
 
 reConstruct is a Django app allowing homeowners and contractors to readily 
 contact various waste processors (recycling, salvage, etc.).  New users 
